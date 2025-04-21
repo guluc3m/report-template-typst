@@ -1,4 +1,5 @@
 #import "uc3mreport.typ": conf
+
 #show: conf.with(
   degree: "Grado en...",
   subject: "Asignatura",
@@ -20,7 +21,8 @@
   ),
   professor: "Perico de los Palotes",
   toc: true,
-  logo: "old"
+  logo: "old",
+  language: "en"
 )
 
 
