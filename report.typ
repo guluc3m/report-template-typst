@@ -4,7 +4,7 @@
   degree: "Grado en...",
   subject: "Asignatura",
   year: (24, 25),
-  lab: "Práctica 0",
+  project: "Práctica 0",
   title: "La mejor memoria de la historia",
   group: 89,
   authors: (

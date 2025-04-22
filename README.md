@@ -8,7 +8,10 @@ Para compilar, instala [Typst](https://github.com/typst/typst?tab=readme-ov-file
 typst compile report.typ
 ```
 > [!TIP]
-> Para usuarios de VS Code, se recomienda usar la extensión [Tinymist Typst](https://marketplace.visualstudio.com/items/?itemName=myriad-dreamin.tinymist), la cual no requiere instalar el compilador.
+> Para usuarios de [VS Code](https://code.visualstudio.com/), se recomienda usar la extensión [Tinymist Typst](https://marketplace.visualstudio.com/items/?itemName=myriad-dreamin.tinymist), la cual no requiere instalar el compilador.
+
+> [!TIP]
+> Para usuarios de [Neovim](https://neovim.io/), se recomienda usar el plugin [typst-preview.nvim](https://github.com/chomosuke/typst-preview.nvim).
 
 
 ## Más información

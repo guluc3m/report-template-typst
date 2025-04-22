@@ -3,7 +3,7 @@
 #let cover(
   degree,
   subject,
-  lab,
+  project,
   title,
   year,
   logo,
@@ -34,7 +34,7 @@
 
   #v(2em)
 
-  #emph(lab)\
+  #emph(project)\
   #text(25pt, ["#title"])
 
   #line(length: 70%, stroke: azuluc3m)
@@ -95,7 +95,7 @@
   subject: "",
   year: (),
   authors: (),
-  lab: "",
+  project: "",
   title: "",
   group: none,
   professor: none,
@@ -203,7 +203,7 @@
     // header
     header: [
       #set text(azuluc3m)
-      #lab
+      #project
       #h(1fr)
       #subject, grp. #group
 
@@ -237,7 +237,7 @@
   cover(
     degree,
     subject,
-    lab,
+    project,
     title,
     year,
     logo,
