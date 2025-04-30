@@ -71,19 +71,24 @@
  * Writes authors in the short format
 */
 #let shortauthors(authors: ()) = {
-  let i = 0
-  for author in authors {
+  for (i, author) in authors.enumerate() {
+
+    // name
     for name in author.name.split(" ") {
       name.at(0) + ". "
     }
 
-    author.surname.split(" ").at(0)
+    // surname
+    if "surname_length" in author{
+      author.surname.split(" ").slice(1, count: author.surname_length).join(" ")
+    } else {
+      author.surname.split(" ").at(0)
+    }
 
-    i += 1
-
-    if i < authors.len() - 1 {
+    // connector
+    if i < authors.len() - 2 {
       ", "
-    } else if i == authors.len() - 1{
+    } else if i == authors.len() - 2 {
       " & "
     }
   }
