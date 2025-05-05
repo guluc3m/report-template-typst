@@ -43,7 +43,8 @@
   #{
     set text(20pt)
     for author in authors [
-      #author.name #author.surname --- #author.nia\
+      #author.name #author.surname ---
+      #link("mailto:" + str(author.nia) + "@alumnos.uc3m.es")[#author.nia]\
     ]
   }
 
@@ -172,9 +173,10 @@
   show figure.where(kind: table): set figure.caption(position: top)
 
 
-  /* REFERENCES */
+  /* REFERENCES & LINKS */
 
   show ref: set text(azuluc3m)
+  show link: set text(azuluc3m)
 
 
   /* FOOTNOTES */

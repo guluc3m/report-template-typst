@@ -16,3 +16,6 @@ typst compile report.typ
 
 ## Más información
 - [Documentación de Typst](https://typst.app/docs)
+- [Guía para usuarios de LaTeX](https://typst.app/docs/guides/guide-for-latex-users/)
+    - [Conversor de fórmulas de LaTeX a Typst](https://qwinsi.github.io/tex2typst-webapp)
+- [Chuleta para fórmulas](https://qwinsi.github.io/tex2typst-webapp/cheat-sheet.html)
