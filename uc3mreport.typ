@@ -120,6 +120,13 @@
   chapter_on_new_page: true,
   doc,
 ) = {
+  /* CONFIG */
+  set document(
+    title: title,
+    author: authors.map(x => x.name + " " + x.surname),
+    description: [#project, #subject #year.at(0)/#year.at(1). Universidad Carlos
+      III de Madrid],
+  )
 
   /* TEXT */
 
