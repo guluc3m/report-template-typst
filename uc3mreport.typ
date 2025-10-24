@@ -17,50 +17,52 @@
   authors: (),
   professor: none,
   team: none,
-  language: "en"
-) = [
-  #set align(center)
-  #set text(azuluc3m)
-  #set text(size: 17pt)
-  #set page(header: [], footer: [])
+  language: "en",
+) = {
+  set align(center)
+  set text(azuluc3m)
+  set text(size: 17pt)
+  set page(header: [], footer: [])
 
   // logo
-  #if logo == "new" [
-    #image("img/new_uc3m_logo.svg", width: 100%)
-    #v(1em)
-  ] else [
-    #image("img/old_uc3m_logo.svg", width: 45%)
-    #v(1em)
-  ]
-
-  #emph(degree)
-
-  #subject #year.at(0)/#year.at(1)\
-  Grupo #group
-
-  #v(2em)
-
-  #emph(project)\
-  #text(25pt, ["#title"])
-
-  #line(length: 70%, stroke: azuluc3m)
-
-  // authors
-  #{
-    set text(20pt)
-    for author in authors [
-      #author.name #author.surname ---
-      #link("mailto:" + str(author.nia) + "@alumnos.uc3m.es")[#author.nia]\
-    ]
+  if logo == "new" {
+    image("img/new_uc3m_logo.svg", width: 100%)
+    v(1em)
+  } else {
+    image("img/old_uc3m_logo.svg", width: 45%)
+    v(1em)
   }
 
-  #if team != none [
+  emph(degree)
+  parbreak()
+
+  [#subject #year.at(0)/#year.at(1)]
+  linebreak()
+  [#if language == "en" [Group] else [Grupo] #group]
+
+  v(2em)
+
+  emph(project)
+  linebreak()
+  text(25pt, ["#title"])
+
+  line(length: 70%, stroke: azuluc3m)
+
+  // authors
+  set text(20pt)
+  for author in authors [
+    #author.name #author.surname --- #link(
+      "mailto:" + str(author.nia) + "@alumnos.uc3m.es",
+    )[#author.nia]\
+  ]
+
+  if team != none [
     Team #team
   ]
 
-  #v(3em)
+  v(3em)
 
-  #if professor != none [
+  if professor != none [
     #if language == "es" [
       _Profesor_\
     ] else [
@@ -69,24 +71,23 @@
     #professor
   ]
 
-  #pagebreak()
-  #counter(page).update(1)
-]
+  pagebreak()
+  counter(page).update(1)
+}
 
 
 /**
  * Writes authors in the short format
-*/
+ */
 #let shortauthors(authors: ()) = {
   for (i, author) in authors.enumerate() {
-
     // name
     for name in author.name.split(" ") {
       name.at(0) + ". "
     }
 
     // surname
-    if "surname_length" in author{
+    if "surname_length" in author {
       author.surname.split(" ").slice(0, count: author.surname_length).join(" ")
     } else {
       author.surname.split(" ").at(0)
@@ -117,14 +118,19 @@
   logo: "new",
   bibliography_file: none,
   chapter_on_new_page: true,
-  doc
+  doc,
 ) = {
 
   /* TEXT */
 
   set text(size: 12pt, lang: language)
 
-  set par(leading: 0.65em, spacing: 1em, first-line-indent: 1.8em, justify: true)
+  set par(
+    leading: 0.65em,
+    spacing: 1em,
+    first-line-indent: 1.8em,
+    justify: true,
+  )
 
 
   /* HEADINGS */
@@ -164,13 +170,13 @@
       place(
         it.placement,
         float: true,
-        block(width: 100%, inset: (bottom: figure_spacing), align(center, it))
+        block(width: 100%, inset: (bottom: figure_spacing), align(center, it)),
       )
     } else if it.placement == bottom {
       place(
         it.placement,
         float: true,
-        block(width: 100%, inset: (top: figure_spacing), align(center, it))
+        block(width: 100%, inset: (top: figure_spacing), align(center, it)),
       )
     }
   }
@@ -188,20 +194,23 @@
   /* FOOTNOTES */
 
   // change line color
-  set footnote.entry(separator: line(length: 30% + 0pt, stroke: 0.5pt + azuluc3m))
+  set footnote.entry(separator: line(
+    length: 30% + 0pt,
+    stroke: 0.5pt + azuluc3m,
+  ))
 
   // change footnote number color
-  show footnote: set text(azuluc3m)  // in text
-  show footnote.entry: it => {  // in footnote
-    h(1em)  // indent
+  show footnote: set text(azuluc3m) // in text
+  show footnote.entry: it => {
+    // in footnote
+    h(1em) // indent
     {
       set text(azuluc3m)
-      super(str(counter(footnote).at(it.note.location()).at(0)))  // number
+      super(str(counter(footnote).at(it.note.location()).at(0))) // number
     }
-    h(.05em)  // mini-space in between number and body (same as default)
+    h(.05em) // mini-space in between number and body (same as default)
     it.note.body
   }
-
 
 
   /* PAGE LAYOUT */
@@ -241,7 +250,7 @@
         "pg. 1 " + page_delimeter + " 1",
         both: true,
       )
-    ]
+    ],
   )
 
 
@@ -258,7 +267,7 @@
     professor: professor,
     group: group,
     team: team,
-    language: language
+    language: language,
   )
 
 
@@ -266,7 +275,7 @@
 
   if toc {
     let outline_title = "Table of Contents"
-    if language == "es"{
+    if language == "es" {
       outline_title = "Tabla de Contenidos"
     }
     outline(title: outline_title)
