@@ -215,6 +215,7 @@
     }
   }
 
+  /* TABLES */
   // captions on top for tables
   show figure.where(kind: table): set figure.caption(position: top)
 
