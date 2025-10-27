@@ -189,13 +189,6 @@
   }
 
   /* TABLES */
-  set table(
-      stroke: none,
-      fill: (x, y) => if calc.even(y) == false { azuluc3m.transparentize(80%) },
-      inset: (x: 1.0em, y: 0.5em),
-      gutter: 0.2em, row-gutter: 0em, column-gutter: 0em
-    )
-  show table.cell.where(y: 0) : set text(weight: "bold")
 
   // captions on top for tables
   show figure.where(kind: table): set figure.caption(position: top)

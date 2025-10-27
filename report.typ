@@ -25,6 +25,7 @@
   language: "en"
 )
 
+#let azuluc3m = rgb("#000e78")
 
 
 = Introduction
@@ -38,9 +39,22 @@
 #lorem(50)
 
 = Related Work
-#lorem(200)
+#lorem(180)
 
 #figure(
   image("img/old_uc3m_logo.svg", width: 70%),
   caption: [El mejor logo de la UC3M, con diferencia]
 ) <logo>
+
+#table(
+  columns: (0.2fr, 0.5fr, auto),
+  stroke: none,
+  fill: (x, y) => if calc.even(y) == false { azuluc3m.transparentize(80%) },
+  inset: (x: 1.0em, y: 0.5em),
+  gutter: 0.2em, row-gutter: 0em, column-gutter: 0em,
+
+  [*blablabla*], [*blebleble*], [*blublubluuu*],
+  [blablabla], [blebleble], [blublubluuu],
+  [blablabla], [blebleble], [blublubluuu],
+  [blablabla], [blebleble], [blublubluuu],
+)
