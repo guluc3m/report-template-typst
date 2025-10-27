@@ -1,8 +1,8 @@
 #import "uc3mreport.typ": conf, azuluc3m
 
 #show: conf.with(
-  degree: "Grado en...",
-  subject: "Asignatura",
+  degree: "Degree in...",
+  subject: "Subject",
   year: (24, 25),
   project: "Práctica 0",
   title: "La mejor memoria de la historia",
@@ -18,7 +18,33 @@
       surname: "Navarro",
       nia: 100429022
     ),
+    (
+      name: "Menganito",
+      surname: "Suarez",
+      nia: 100829022
+    ),
+    (
+      name: "Fulano",
+      surname: "De Tal y Pascual",
+      nia: 100629023
+    ),
+    (
+      name: "Rosa",
+      surname: "Melano",
+      nia: 100529026
+    ),
+    (
+      name: "Aitor",
+      surname: "Menta Segura",
+      nia: 100819122
+    ),
+    (
+      name: "Dolores",
+      surname: "Fuertes De Cabeza",
+      nia: 100529012
+    ),
   ),
+  team: "Los chungitos",
   professor: "Perico de los Palotes",
   toc: true,
   logo: "old",
