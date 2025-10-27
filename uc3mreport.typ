@@ -6,6 +6,33 @@
 
 #let azuluc3m = rgb("#000e78")
 
+
+/**
+ * Writes authors in the short format
+ */
+#let shortauthors(authors: ()) = {
+  for (i, author) in authors.enumerate() {
+    // name
+    for name in author.name.split(" ") {
+      name.at(0) + ". "
+    }
+
+    // surname
+    if "surname_length" in author {
+      author.surname.split(" ").slice(0, count: author.surname_length).join(" ")
+    } else {
+      author.surname.split(" ").at(0)
+    }
+
+    // connector
+    if i < authors.len() - 2 {
+      ", "
+    } else if i == authors.len() - 2 {
+      " & "
+    }
+  }
+}
+
 #let cover(
   degree,
   subject,
@@ -128,7 +155,6 @@
     }
   }
 }
-
 
 #let conf(
   degree: "",
