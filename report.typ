@@ -1,4 +1,4 @@
-#import "uc3mreport.typ": conf
+#import "uc3mreport.typ": conf, azuluc3m
 
 #show: conf.with(
   degree: "Grado en...",
@@ -25,7 +25,13 @@
   language: "en"
 )
 
-
+#set table(
+      stroke: none,
+      fill: (x, y) => if calc.even(y) == false { azuluc3m.transparentize(80%) },
+      inset: (x: 1.0em, y: 0.5em),
+      gutter: 0.2em, row-gutter: 0em, column-gutter: 0em
+    )
+#show table.cell.where(y: 0) : set text(weight: "bold")
 
 = Introduction
 #lorem(90)
@@ -38,9 +44,17 @@
 #lorem(50)
 
 = Related Work
-#lorem(200)
+#lorem(180)
 
 #figure(
   image("img/old_uc3m_logo.svg", width: 70%),
   caption: [El mejor logo de la UC3M, con diferencia]
 ) <logo>
+
+#table(
+  columns: (1fr, 2fr, auto),
+  [*blablabla*], [*blebleble*], [*blublubluuu*],
+  [blablabla], [blebleble], [blublubluuu],
+  [blablabla], [blebleble], [blublubluuu],
+  [blablabla], [blebleble], [blublubluuu],
+)
