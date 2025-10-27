@@ -6,6 +6,33 @@
 
 #let azuluc3m = rgb("#000e78")
 
+
+/**
+ * Writes authors in the short format
+ */
+#let shortauthors(authors: ()) = {
+  for (i, author) in authors.enumerate() {
+    // name
+    for name in author.name.split(" ") {
+      name.at(0) + ". "
+    }
+
+    // surname
+    if "surname_length" in author {
+      author.surname.split(" ").slice(0, count: author.surname_length).join(" ")
+    } else {
+      author.surname.split(" ").at(0)
+    }
+
+    // connector
+    if i < authors.len() - 2 {
+      ", "
+    } else if i == authors.len() - 2 {
+      " & "
+    }
+  }
+}
+
 #let cover(
   degree,
   subject,
@@ -48,19 +75,43 @@
 
   line(length: 70%, stroke: azuluc3m)
 
-  // authors
-  set text(20pt)
-  for author in authors [
-    #author.name #author.surname --- #link(
-      "mailto:" + str(author.nia) + "@alumnos.uc3m.es",
-    )[#author.nia]\
-  ]
-
+  // team
   if team != none [
     Team #team
   ]
 
-  v(3em)
+  // authors
+  if authors.len() < 5 {
+    set text(20pt)
+    for author in authors [
+      #author.name #author.surname --- #link(
+        "mailto:" + str(author.nia) + "@alumnos.uc3m.es",
+      )[#author.nia]\
+    ]
+  } else {
+    for i in range(calc.ceil(authors.len() / 3)) {
+      let end = calc.min((i + 1) * 3, authors.len())
+      let is-last = authors.len() == end
+      let slice = authors.slice(i * 3, end)
+      grid(
+        columns: slice.len() * (1fr,),
+        gutter: 12pt,
+        ..slice.map(author => align(center, {
+          set text(size: 11pt)
+          author.name + " " + author.surname
+          if "nia" in author [
+              \ #link("mailto:" + str(author.nia) + "@alumnos.uc3m.es")[#author.nia] 
+          ]
+        }))
+      )
+
+      if not is-last {
+        v(16pt, weak: true)
+      }
+    }
+  }
+
+  v(1fr)
 
   if professor != none [
     #if language == "es" [
@@ -73,33 +124,6 @@
 
   pagebreak()
   counter(page).update(1)
-}
-
-
-/**
- * Writes authors in the short format
- */
-#let shortauthors(authors: ()) = {
-  for (i, author) in authors.enumerate() {
-    // name
-    for name in author.name.split(" ") {
-      name.at(0) + ". "
-    }
-
-    // surname
-    if "surname_length" in author {
-      author.surname.split(" ").slice(0, count: author.surname_length).join(" ")
-    } else {
-      author.surname.split(" ").at(0)
-    }
-
-    // connector
-    if i < authors.len() - 2 {
-      ", "
-    } else if i == authors.len() - 2 {
-      " & "
-    }
-  }
 }
 
 
@@ -247,7 +271,11 @@
 
       #set align(right)
       #set text(azuluc3m)
-      #shortauthors(authors: authors)
+      #if authors.len() < 5 { 
+        shortauthors(authors: authors)
+      } else {
+        if language == "es" { [Equipo #team] } else { [Team #team] }
+      }
       #h(1fr)
       #let page_delimeter = "of"
       #if language == "es" {
