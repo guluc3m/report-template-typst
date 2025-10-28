@@ -6,33 +6,6 @@
 
 #let azuluc3m = rgb("#000e78")
 
-
-/**
- * Writes authors in the short format
- */
-#let shortauthors(authors: ()) = {
-  for (i, author) in authors.enumerate() {
-    // name
-    for name in author.name.split(" ") {
-      name.at(0) + ". "
-    }
-
-    // surname
-    if "surname_length" in author {
-      author.surname.split(" ").slice(0, count: author.surname_length).join(" ")
-    } else {
-      author.surname.split(" ").at(0)
-    }
-
-    // connector
-    if i < authors.len() - 2 {
-      ", "
-    } else if i == authors.len() - 2 {
-      " & "
-    }
-  }
-}
-
 #let cover(
   degree,
   subject,
@@ -65,7 +38,9 @@
 
   [#subject #year.at(0)/#year.at(1)]
   linebreak()
-  [#if language == "en" [Group] else [Grupo] #group]
+  if group != none {
+    [#if language == "en" [Group] else [Grupo] #group]
+  }
 
   v(2em)
 
@@ -75,9 +50,11 @@
 
   line(length: 70%, stroke: azuluc3m)
 
+  v(1fr) 
+
   // team
   if team != none [
-    Team #team
+    #team
   ]
 
   // authors
@@ -124,6 +101,32 @@
 
   pagebreak()
   counter(page).update(1)
+}
+
+/**
+ * Writes authors in the short format
+ */
+#let shortauthors(authors: ()) = {
+  for (i, author) in authors.enumerate() {
+    // name
+    for name in author.name.split(" ") {
+      name.at(0) + ". "
+    }
+
+    // surname
+    if "surname_length" in author {
+      author.surname.split(" ").slice(0, count: author.surname_length).join(" ")
+    } else {
+      author.surname.split(" ").at(0)
+    }
+
+    // connector
+    if i < authors.len() - 2 {
+      ", "
+    } else if i == authors.len() - 2 {
+      " & "
+    }
+  }
 }
 
 
@@ -258,7 +261,7 @@
       #set text(azuluc3m)
       #project
       #h(1fr)
-      #subject, grp. #group
+      #subject #if group != none [, grp. #group]
 
       #v(-0.7em)
       #line(length: 100%, stroke: 0.4pt + azuluc3m)
