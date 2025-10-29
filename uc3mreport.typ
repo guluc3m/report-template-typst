@@ -54,7 +54,8 @@
 
   // team
   if team != none [
-    #team
+    #text(size: 1.4em, [#team:]) 
+    #v(0.5em)
   ]
 
   // authors

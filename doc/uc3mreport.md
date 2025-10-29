@@ -115,5 +115,16 @@ The `cover()` function is used later to render, as its name implies, the cover o
 }
 ```
 
-The functions just takes the necesary parameters and generates a cover.
+The functions takes some parameters and outpust a solid cover for the report. Lets explain what this parameters are:
 
+- `degree` -> takes a `str` or `content` with the degree the student courses
+- `subject` -> takes a `str` or `content` with the subject of the project
+- `project` -> takes a `str` or `content` with the project name
+- `title` -> takes a `str` or `content` with the project title
+- `year` -> takes an `array` with two values `(x, y)` being `x` the 2 last digits of the year the couse started and `y` the 2 last digits of the year the course ends
+- `logo` -> takes a `str` `"new"/"old"` that selects the logo that will be used in the cover
+- `group` -> takes an `int` with the number of the subject group
+- `authors` -> takes an `arry` with the authors of the report (later explained in depth)
+- `professor` -> takes a `str` with the professors name
+- `team` -> takes a `str` or `content` with the teams name (used mainly when many authors are present)
+- `language` -> takes a `str1` either `"en"` or `"es"` to adjust the template language

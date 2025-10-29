@@ -28,21 +28,21 @@
       surname: "De Tal y Pascual",
       nia: 100629023
     ),
-    (
-      name: "Rosa",
-      surname: "Melano",
-      nia: 100529026
-    ),
-    (
-      name: "Aitor",
-      surname: "Menta Segura",
-      nia: 100819122
-    ),
-    (
-      name: "Dolores",
-      surname: "Fuertes De Cabeza",
-      nia: 100529012
-    ),
+    // (
+    //   name: "Rosa",
+    //   surname: "Melano",
+    //   nia: 100529026
+    // ),
+    // (
+    //   name: "Aitor",
+    //   surname: "Menta Segura",
+    //   nia: 100819122
+    // ),
+    // (
+    //   name: "Dolores",
+    //   surname: "Fuertes De Cabeza",
+    //   nia: 100529012
+    // ),
   ),
   team: "Los chungitos",
   professor: "Perico de los Palotes",
