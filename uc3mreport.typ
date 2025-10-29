@@ -80,9 +80,9 @@
   v(1fr) 
 
   // team
-  if team != none [
-    #team
-  ]
+  if team != none {
+    text(size: 1.4em, team)
+  }
 
   // authors
   if authors.len() < 5 {
@@ -99,7 +99,7 @@
       let slice = authors.slice(i * 3, end)
       grid(
         columns: slice.len() * (1fr,),
-        gutter: 12pt,
+        gutter: 10pt,
         ..slice.map(author => align(center, {
           set text(size: 11pt)
           author.name + " " + author.surname
@@ -303,9 +303,9 @@
       #set text(azuluc3m)
       #if authors.len() < 5 { 
         shortauthors(authors: authors)
-      } else {
-        if language == "es" { [Equipo #team] } else { [Team #team] }
-      }
+      } else [
+        #team
+      ]
       #h(1fr)
       #let page_delimeter = "of"
       #if language == "es" {
