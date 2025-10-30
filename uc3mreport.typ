@@ -155,8 +155,8 @@
 /// - logo (str): University logo, either `"new"` or `"old"`
 /// - group (int, none): Course group number, i.e. `89` (optional)
 /// - authors (dictionaty): Authors information `(name: str, surname: str, nia: int)`
-/// - professor (str, none): Professor's name
-/// - team (str): Team name (optional)
+/// - professor (str): Professor's name
+/// - team (str, none): Team name (optional)
 /// - language (str): Report language, either `"es"` or `"en"`
 /// - toc (boolean): Whether to show the table of contents (`true`) or not (`false`)
 /// - bibliography_file (str, none): Path to the bibliography file; if no file is specified the bibliography will not be shown 
