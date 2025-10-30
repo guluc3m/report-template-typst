@@ -10,7 +10,7 @@
 ///
 /// - authors (array): An array containing the authors information to iterate through
 /// -> content
-#let shortauthors(authors: ()) = {
+#let _shortauthors(authors: ()) = {
   for (i, author) in authors.enumerate() {
     // name
     for name in author.name.split(" ") {
@@ -35,19 +35,19 @@
 
 /// A functiong that generates the cover for the report.
 ///
-/// - degree (str, content): The degree your are enroled in.
-/// - subject (str, content): The subject the report is for.
-/// - project (str, content): The title or number of the project (mind it will only display what you put here, no content will be added)
-/// - title (str, content): The title of the project
-/// - year (array): and array containing the last two digits of the course i.e. (25, 26)
-/// - logo (str): either "new" or "old" for the universtity old or new logo
-/// - group (int): the number of the course group
-/// - authors (array): an array containing the authors information (name, surname, nia)
-/// - professor (str, content): professors name
-/// - team (str, contetn): teams name
-/// - language (str): either "es" or "en"
+/// - degree (str): The degree your are enroled in
+/// - subject (str): The subject the report is for
+/// - project (str): Type of project, i.e. `"Lab 1"` (mind it will only display what you put here, no content will be added)
+/// - title (str): Title of the project
+/// - year (array): An array containing the academic year, i.e. `(25, 26)`
+/// - logo (str): University logo, either `"new"` or `"old"`
+/// - group (int, none): Course group number, i.e. `89` (optional)
+/// - authors (dictionaty): Authors information `(name: str, surname: str, nia: int)`
+/// - professor (str, none): Professor's name
+/// - team (str): Team name (optional)
+/// - language (str): Report language, either `"es"` or `"en"`
 /// -> content
-#let cover(
+#let _cover(
   degree,
   subject,
   project,
@@ -145,24 +145,24 @@
   counter(page).update(1)
 }
 
-///  This is the config function that will be later used in the template file in order to import all the styling and custom looks
+/// Main configuration function.
 ///
-/// - degree (str, content): The degree your are enroled in.
-/// - subject (str, content): The subject the report is for.
-/// - project (str, content): The title or number of the project (mind it will only display what you put here, no content will be added)
-/// - title (str, content): The title of the project
-/// - year (array): and array containing the last two digits of the course i.e. (25, 26)
-/// - logo (str): either "new" or "old" for the universtity old or new logo
-/// - group (int): the number of the course group
-/// - authors (array): an array containing the authors information (name, surname, nia)
-/// - professor (str, content): professors name
-/// - team (str, contetn): teams name
-/// - language (str): either "es" or "en"
-/// - toc (): whether to show or not the table of contents
-/// - bibliography_file (str): the path to the bibliography file, if no file is specified the bibliography will not be shown 
-/// - chapter_on_new_page (bool):  whether to start a new chapter on a new page
-/// - doc (content):  documents contents
-/// -> content 
+/// - degree (str): The degree your are enroled in
+/// - subject (str): The subject the report is for
+/// - project (str): Type of project, i.e. `"Lab 1"` (mind it will only display what you put here, no content will be added)
+/// - title (str): Title of the project
+/// - year (array): An array containing the academic year, i.e. `(25, 26)`
+/// - logo (str): University logo, either `"new"` or `"old"`
+/// - group (int, none): Course group number, i.e. `89` (optional)
+/// - authors (dictionaty): Authors information `(name: str, surname: str, nia: int)`
+/// - professor (str, none): Professor's name
+/// - team (str): Team name (optional)
+/// - language (str): Report language, either `"es"` or `"en"`
+/// - toc (boolean): Whether to show the table of contents (`true`) or not (`false`)
+/// - bibliography_file (str, none): Path to the bibliography file; if no file is specified the bibliography will not be shown 
+/// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
+/// - doc (content): Document contents
+/// -> content
 #let conf(
   degree: "",
   subject: "",
@@ -309,7 +309,7 @@
       #set align(right)
       #set text(azuluc3m)
       #if authors.len() < 5 { 
-        shortauthors(authors: authors)
+        _shortauthors(authors: authors)
       } else [
         #team
       ]
@@ -328,7 +328,7 @@
 
   /* COVER */
 
-  cover(
+  _cover(
     degree,
     subject,
     project,

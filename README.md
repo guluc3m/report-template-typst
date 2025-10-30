@@ -10,13 +10,13 @@ Para más información, consulta la [documentación](/doc/documentation.pdf) de 
 Navega hasta el directorio en el que deseas guardar tu report y clona el repositorio:
 
 ```bash
-$ git clone git@github.com:guluc3m/report-template-typst.git ./Project_name
-$ cd ./Project_name
+git clone git@github.com:guluc3m/report-template-typst.git ./Project_name
+cd ./Project_name
 ```
 Para compilar, instala [Typst](https://github.com/typst/typst?tab=readme-ov-file#installation) y corre:
 
 ```bash
-$ typst compile report.typ
+typst compile report.typ
 ```
 
 > [!TIP]
