@@ -6,10 +6,10 @@
 
 #let azuluc3m = rgb("#000e78")
 
-
-/**
- * Writes authors in the short format
- */
+/// Writes the authors name in short format
+///
+/// - authors (array): An array containing the authors information to iterate through
+/// -> content
 #let shortauthors(authors: ()) = {
   for (i, author) in authors.enumerate() {
     // name
@@ -33,6 +33,20 @@
   }
 }
 
+/// A functiong that generates the cover for the report.
+///
+/// - degree (str, content): The degree your are enroled in.
+/// - subject (str, content): The subject the report is for.
+/// - project (str, content): The title or number of the project (mind it will only display what you put here, no content will be added)
+/// - title (str, content): The title of the project
+/// - year (array): and array containing the last two digits of the course i.e. (25, 26)
+/// - logo (str): either "new" or "old" for the universtity old or new logo
+/// - group (int): the number of the course group
+/// - authors (array): an array containing the authors information (name, surname, nia)
+/// - professor (str, content): professors name
+/// - team (str, contetn): teams name
+/// - language (str): either "es" or "en"
+/// -> content
 #let cover(
   degree,
   subject,
@@ -115,8 +129,6 @@
     }
   }
 
-=======
-
   // team
   if team != none [
     #text(size: 1.4em, [#team:]) 
@@ -154,7 +166,6 @@
     }
   }
 
->>>>>>> origin/doc
   v(1fr)
 
   if professor != none [
@@ -170,32 +181,24 @@
   counter(page).update(1)
 }
 
-/**
- * Writes authors in the short format
- */
-#let shortauthors(authors: ()) = {
-  for (i, author) in authors.enumerate() {
-    // name
-    for name in author.name.split(" ") {
-      name.at(0) + ". "
-    }
-
-    // surname
-    if "surname_length" in author {
-      author.surname.split(" ").slice(0, count: author.surname_length).join(" ")
-    } else {
-      author.surname.split(" ").at(0)
-    }
-
-    // connector
-    if i < authors.len() - 2 {
-      ", "
-    } else if i == authors.len() - 2 {
-      " & "
-    }
-  }
-}
-
+/// 
+///
+/// - degree (str, content): The degree your are enroled in.
+/// - subject (str, content): The subject the report is for.
+/// - project (str, content): The title or number of the project (mind it will only display what you put here, no content will be added)
+/// - title (str, content): The title of the project
+/// - year (array): and array containing the last two digits of the course i.e. (25, 26)
+/// - logo (str): either "new" or "old" for the universtity old or new logo
+/// - group (int): the number of the course group
+/// - authors (array): an array containing the authors information (name, surname, nia)
+/// - professor (str, content): professors name
+/// - team (str, contetn): teams name
+/// - language (str): either "es" or "en"
+/// - toc (): whether to show or not the table of contents
+/// - bibliography_file (str): the path to the bibliography file, if no file is specified the bibliography will not be shown 
+/// - chapter_on_new_page (bool):  whether to start a new chapter on a new page
+/// - doc (content):  documents contents
+/// -> content 
 #let conf(
   degree: "",
   subject: "",
