@@ -6,11 +6,11 @@
 
 #let azuluc3m = rgb("#000e78")
 
-
-/**
- * Writes authors in the short format
- */
-#let shortauthors(authors: ()) = {
+/// Writes the authors name in short format
+///
+/// - authors (array): An array containing the authors information to iterate through
+/// -> content
+#let _shortauthors(authors: ()) = {
   for (i, author) in authors.enumerate() {
     // name
     for name in author.name.split(" ") {
@@ -33,7 +33,21 @@
   }
 }
 
-#let cover(
+/// A functiong that generates the cover for the report.
+///
+/// - degree (str): The degree your are enroled in
+/// - subject (str): The subject the report is for
+/// - project (str): Type of project, i.e. `"Lab 1"` (mind it will only display what you put here, no content will be added)
+/// - title (str): Title of the project
+/// - year (array): An array containing the academic year, i.e. `(25, 26)`
+/// - logo (str): University logo, either `"new"` or `"old"`
+/// - group (int, none): Course group number, i.e. `89` (optional)
+/// - authors (dictionaty): Authors information `(name: str, surname: str, nia: int)`
+/// - professor (str, none): Professor's name
+/// - team (str): Team name (optional)
+/// - language (str): Report language, either `"es"` or `"en"`
+/// -> content
+#let _cover(
   degree,
   subject,
   project,
@@ -80,9 +94,10 @@
   v(1fr) 
 
   // team
-  if team != none {
-    text(size: 1.4em, team)
-  }
+  if team != none [
+    #text(size: 1.4em, [#team:]) 
+    #v(0.5em)
+  ]
 
   // authors
   if authors.len() < 5 {
@@ -99,7 +114,7 @@
       let slice = authors.slice(i * 3, end)
       grid(
         columns: slice.len() * (1fr,),
-        gutter: 10pt,
+        gutter: 12pt,
         ..slice.map(author => align(center, {
           set text(size: 11pt)
           author.name + " " + author.surname
@@ -130,32 +145,24 @@
   counter(page).update(1)
 }
 
-/**
- * Writes authors in the short format
- */
-#let shortauthors(authors: ()) = {
-  for (i, author) in authors.enumerate() {
-    // name
-    for name in author.name.split(" ") {
-      name.at(0) + ". "
-    }
-
-    // surname
-    if "surname_length" in author {
-      author.surname.split(" ").slice(0, count: author.surname_length).join(" ")
-    } else {
-      author.surname.split(" ").at(0)
-    }
-
-    // connector
-    if i < authors.len() - 2 {
-      ", "
-    } else if i == authors.len() - 2 {
-      " & "
-    }
-  }
-}
-
+/// Main configuration function.
+///
+/// - degree (str): The degree your are enroled in
+/// - subject (str): The subject the report is for
+/// - project (str): Type of project, i.e. `"Lab 1"` (mind it will only display what you put here, no content will be added)
+/// - title (str): Title of the project
+/// - year (array): An array containing the academic year, i.e. `(25, 26)`
+/// - logo (str): University logo, either `"new"` or `"old"`
+/// - group (int, none): Course group number, i.e. `89` (optional)
+/// - authors (dictionaty): Authors information `(name: str, surname: str, nia: int)`
+/// - professor (str): Professor's name
+/// - team (str, none): Team name (optional)
+/// - language (str): Report language, either `"es"` or `"en"`
+/// - toc (boolean): Whether to show the table of contents (`true`) or not (`false`)
+/// - bibliography_file (str, none): Path to the bibliography file; if no file is specified the bibliography will not be shown 
+/// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
+/// - doc (content): Document contents
+/// -> content
 #let conf(
   degree: "",
   subject: "",
@@ -302,7 +309,7 @@
       #set align(right)
       #set text(azuluc3m)
       #if authors.len() < 5 { 
-        shortauthors(authors: authors)
+        _shortauthors(authors: authors)
       } else [
         #team
       ]
@@ -321,7 +328,7 @@
 
   /* COVER */
 
-  cover(
+  _cover(
     degree,
     subject,
     project,

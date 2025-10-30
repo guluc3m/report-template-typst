@@ -1,12 +1,24 @@
 # Plantilla de Typst para memorias de la UC3M
 
-## Uso
+## Estructura
 La memoria consiste de un archivo principal [`report.typ`](report.typ), y un archivo de plantilla [`uc3mreport.typ`](uc3mreport.typ), el cual contiene toda la configuración.
 
-Para compilar, instala [Typst](https://github.com/typst/typst?tab=readme-ov-file#installation) y corre:
+Para más información, consulta la [documentación](/doc/documentation.pdf) de la plantilla.
+
+## Uso
+
+Navega hasta el directorio en el que deseas guardar tu report y clona el repositorio:
+
+```bash
+git clone git@github.com:guluc3m/report-template-typst.git ./Project_name
+cd ./Project_name
 ```
+Para compilar, instala [Typst](https://github.com/typst/typst?tab=readme-ov-file#installation) y corre:
+
+```bash
 typst compile report.typ
 ```
+
 > [!TIP]
 > Para usuarios de [VS Code](https://code.visualstudio.com/), se recomienda usar la extensión [Tinymist Typst](https://marketplace.visualstudio.com/items/?itemName=myriad-dreamin.tinymist), la cual no requiere instalar el compilador.
 
@@ -15,6 +27,7 @@ typst compile report.typ
 
 
 ## Más información
+
 - [Documentación de Typst](https://typst.app/docs)
 - [_Cheatsheet_ de Typst](https://typst.app/docs/reference/syntax/)
 - [Guía para usuarios de LaTeX](https://typst.app/docs/guides/guide-for-latex-users/)
