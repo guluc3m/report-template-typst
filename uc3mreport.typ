@@ -94,42 +94,6 @@
   v(1fr) 
 
   // team
-  if team != none {
-    text(size: 1.4em, team)
-  }
-
-  // authors
-  if authors.len() < 5 {
-    set text(20pt)
-    for author in authors [
-      #author.name #author.surname --- #link(
-        "mailto:" + str(author.nia) + "@alumnos.uc3m.es",
-      )[#author.nia]\
-    ]
-  } else {
-    for i in range(calc.ceil(authors.len() / 3)) {
-      let end = calc.min((i + 1) * 3, authors.len())
-      let is-last = authors.len() == end
-      let slice = authors.slice(i * 3, end)
-      grid(
-        columns: slice.len() * (1fr,),
-        gutter: 10pt,
-        ..slice.map(author => align(center, {
-          set text(size: 11pt)
-          author.name + " " + author.surname
-          if "nia" in author [
-              \ #link("mailto:" + str(author.nia) + "@alumnos.uc3m.es")[#author.nia] 
-          ]
-        }))
-      )
-
-      if not is-last {
-        v(16pt, weak: true)
-      }
-    }
-  }
-
-  // team
   if team != none [
     #text(size: 1.4em, [#team:]) 
     #v(0.5em)
