@@ -145,7 +145,7 @@
   counter(page).update(1)
 }
 
-/// 
+///  This is the config function that will be later used in the template file in order to import all the styling and custom looks
 ///
 /// - degree (str, content): The degree your are enroled in.
 /// - subject (str, content): The subject the report is for.
