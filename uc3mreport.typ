@@ -61,6 +61,7 @@
   language: "en",
 ) = {
   set align(center)
+  set par(justify: false)
   set text(azuluc3m)
   set text(size: 17pt)
   set page(header: [], footer: [])
