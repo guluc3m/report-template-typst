@@ -341,16 +341,62 @@
   )
 
 
-  /* TOC */
+  /* OUTLINES */
 
-  if toc {
-    let outline_title = "Table of Contents"
-    if language == "es" {
-      outline_title = "Tabla de Contenidos"
-    }
-    outline(title: outline_title)
-    pagebreak()
+  // disable footnotes
+  show outline: it => {
+    set footnote.entry(separator: none)
+    show footnote.entry: hide
+    show ref: none
+    show footnote: none
+    it
   }
+  // top-level TOC entries in bold without filling
+  show outline.entry.where(level: 1): it => {
+    // only apply for contents (headings) outline
+    if it.element.func() != heading { return it }
+
+    // don't show page number in outline for appendixes
+    let page-number = if (
+      it.element.supplement == "Apendix" or it.element.supplement == "Apéndice"
+    ) { "" } else { it.page() }
+
+    set block(spacing: 1.5em)
+    link(
+      it.element.location(), // make entry linkable
+      it.indented(
+        it.prefix(),
+        // upper(it.body())
+        strong(it.body())
+        + if page-number == "" { "" } else {
+          "  " + box(width: 1fr, repeat([.], gap: 2pt)) + "  " + page-number
+        },
+      ),
+    )
+  }
+
+  // other TOC entries in regular with adapted filling
+  show outline.entry.where(level: 2).or(outline.entry.where(level: 3)): it => {
+    set block(above: 0.8em)
+
+    show link: set text(black) // reset link color
+
+    link(
+      it.element.location(), // make entry linkable
+      it.indented(
+        it.prefix(),
+        it.body()
+          + "  "
+          + box(width: 1fr, repeat([.], gap: 2pt))
+          + "  "
+          + it.page(),
+      ),
+    )
+  }
+
+  // contents
+  outline(title: if language == "es" [Índice] else [Table of contents], depth: 3)
+  pagebreak()
 
   doc
 
