@@ -395,7 +395,7 @@
   }
 
   // contents
-  outline(title: if language == "es" [Índice] else [Table of contents], depth: 3)
+  outline(title: if language == "es" [Tabla de contenidos] else [Table of contents], depth: 3)
   pagebreak()
 
   doc
