@@ -176,6 +176,7 @@
   team: none,
   language: "en",
   toc: true,
+  figure-spacing: 0.75em,
   logo: "new",
   bibliography_file: none,
   chapter_on_new_page: true,
@@ -214,7 +215,6 @@
   // allow to set headings with selector `<nonumber` to prevent numbering
   show selector(<nonumber>): set heading(numbering: none)
 
-
   /* FIGURES */
 
   // figure captions w/ blue
@@ -226,25 +226,17 @@
     it.body
   }
 
-
   // more space around figures
-  // https://github.com/typst/typst/issues/6095#issuecomment-2755785839
-  show figure: it => {
-    let figure_spacing = 0.75em
-
+  // https://stackoverflow.com/questions/78622060/add-spacing-around-figure-in-typst
+  show figure.where(kind: image).or(figure.where(kind: table)): it => {
     if it.placement == none {
-      block(it, inset: (y: figure_spacing))
-    } else if it.placement == top {
+      block(it, inset: (y: figure-spacing))
+    } else {
       place(
         it.placement,
         float: true,
-        block(width: 100%, inset: (bottom: figure_spacing), align(center, it)),
-      )
-    } else if it.placement == bottom {
-      place(
-        it.placement,
-        float: true,
-        block(width: 100%, inset: (top: figure_spacing), align(center, it)),
+        clearance: figure-spacing,
+        block(align(center, it), spacing: figure-spacing, width: 100%),
       )
     }
   }
@@ -259,6 +251,11 @@
   show ref: set text(azuluc3m)
   show link: set text(azuluc3m)
 
+  /* LISTS */
+
+  // indent lists
+  set list(indent: 1em)
+  set enum(indent: 1em)
 
   /* FOOTNOTES */
 

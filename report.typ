@@ -74,7 +74,8 @@
 
 #figure(
   image("img/old_uc3m_logo.svg", width: 70%),
-  caption: [El mejor logo de la UC3M, con diferencia]
+  caption: [El mejor logo de la UC3M, con diferencia],
+  placement: bottom,
 ) <logo>
 
 #table(
