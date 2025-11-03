@@ -356,12 +356,7 @@
     // only apply for contents (headings) outline
     if it.element.func() != heading { return it }
 
-    // don't show page number in outline for appendixes
-    let page-number = if (
-      it.element.supplement == "Apendix" or it.element.supplement == "Apéndice"
-    ) { "" } else { it.page() }
-
-    set block(spacing: 1.5em)
+    set block(spacing: 1em)
     link(
       it.element.location(), // make entry linkable
       it.indented(
