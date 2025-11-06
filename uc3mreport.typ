@@ -323,6 +323,20 @@
     ],
   )
 
+  /* BIBLIOGRAPHY_ */
+
+  // color bibliography
+  // https://forum.typst.app/t/how-do-i-customize-the-numbering-of-the-bibliography/1490/3
+  show selector(bibliography).or(cite): it => {
+    show link: set text(azuluc3m)
+
+    // bibliography references (IEEE)
+    show regex("\[\d+\]"): num => {
+      set text(azuluc3m)
+      num
+    }
+    it
+  }
 
   /* COVER_ */
 
@@ -401,4 +415,5 @@
     pagebreak()
     bibliography(bibliography_file, style: "ieee")
   }
+
 }

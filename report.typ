@@ -7,6 +7,7 @@
   project: "Práctica 0",
   title: "La mejor memoria de la historia",
   group: 89,
+  bibliography_file: "bib.bib",
   authors: (
     (
       name: "Luis Daniel",
@@ -97,6 +98,12 @@
 #lorem(80)
 
 === Give you up
+
+#lorem(10)
+
+This is a bibliography test @alma991007887673704213. #lorem(20)
+
+#lorem(60)
 
 == Never gonna 
 
