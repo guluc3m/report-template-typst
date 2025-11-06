@@ -160,7 +160,7 @@
 /// - team (str, none): Team name (optional)
 /// - language (str): Report language, either `"es"` or `"en"`
 /// - toc (boolean): Whether to show the table of contents (`true`) or not (`false`)
-/// - bibliography-content (content): Bibliography contents, usually calling `bibliography`.
+/// - bibliography-content (content, none): Bibliography contents, usually calling `bibliography`.
 /// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
 /// - doc (content): Document contents
 /// -> content
@@ -178,7 +178,7 @@
   toc: true,
   figure-spacing: 0.75em,
   logo: "new",
-  bibliography-content: [],
+  bibliography-content: none,
   chapter_on_new_page: true,
   doc,
 ) = {
@@ -413,6 +413,9 @@
 
   /* BIBLIOGRAPHY */
 
-  bibliography-content
+  if bibliography-content != none {
+    pagebreak()
+    bibliography-content
+  }
 
 }
