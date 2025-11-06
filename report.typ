@@ -7,7 +7,7 @@
   project: "Práctica 0",
   title: "La mejor memoria de la historia",
   group: 89,
-  bibliography_file: "bib.bib",
+  bibliography-content: [#bibliography("bib.bib")],
   authors: (
     (
       name: "Luis Daniel",

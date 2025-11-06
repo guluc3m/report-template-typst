@@ -160,7 +160,7 @@
 /// - team (str, none): Team name (optional)
 /// - language (str): Report language, either `"es"` or `"en"`
 /// - toc (boolean): Whether to show the table of contents (`true`) or not (`false`)
-/// - bibliography_file (str, none): Path to the bibliography file; if no file is specified the bibliography will not be shown 
+/// - bibliography-content (content): Bibliography contents, usually calling `bibliography`.
 /// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
 /// - doc (content): Document contents
 /// -> content
@@ -178,7 +178,7 @@
   toc: true,
   figure-spacing: 0.75em,
   logo: "new",
-  bibliography_file: none,
+  bibliography-content: [],
   chapter_on_new_page: true,
   doc,
 ) = {
@@ -402,18 +402,17 @@
     )
   }
 
-  // contents
+  /* OUTLINES */
+
   outline(title: if language == "es" [Tabla de contenidos] else [Table of contents], depth: 3)
   pagebreak()
 
+  // contents
   doc
 
 
   /* BIBLIOGRAPHY */
 
-  if bibliography_file != none {
-    pagebreak()
-    bibliography(bibliography_file, style: "ieee")
-  }
+  bibliography-content
 
 }
