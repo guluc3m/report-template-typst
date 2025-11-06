@@ -324,7 +324,7 @@
   )
 
 
-  /* COVER */
+  /* COVER_ */
 
   _cover(
     degree,
@@ -361,10 +361,9 @@
       it.element.location(), // make entry linkable
       it.indented(
         it.prefix(),
-        // upper(it.body())
         strong(it.body())
-        + if page-number == "" { "" } else {
-          "  " + box(width: 1fr, repeat([.], gap: 2pt)) + "  " + page-number
+        + if it.page() == "" { "" } else {
+          "  " + box(width: 1fr, repeat([.], gap: 2pt)) + "  " + it.page()
         },
       ),
     )
