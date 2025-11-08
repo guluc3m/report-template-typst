@@ -161,6 +161,7 @@
 /// - language (str): Report language, either `"es"` or `"en"`
 /// - toc (boolean): Whether to show the table of contents (`true`) or not (`false`)
 /// - bibliography-content (content, none): Bibliography contents, usually calling `bibliography`.
+/// - appendixes (content, none): Set of appendixes.
 /// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
 /// - doc (content): Document contents
 /// -> content
@@ -179,6 +180,7 @@
   figure-spacing: 0.75em,
   logo: "new",
   bibliography-content: none,
+  appendixes: none,
   chapter_on_new_page: true,
   doc,
 ) = {
@@ -419,5 +421,25 @@
     pagebreak()
     bibliography-content
   }
+
+  /* APPENDIXES */
+
+  // we need to start a new page so `in-appendix` doesn't affect the
+  // bibliography
+  pagebreak(weak: true)
+
+  set heading(
+    // don't show numbering for headings above level 1
+    numbering: (..n) => { if n.pos().len() == 1 { numbering("A.", ..n) } },
+    supplement: if language == "es" [Apéndice] else [Appendix],
+    outlined: false, // not in outline
+  )
+  // show just appendixes titles in outline
+  show heading.where(level: 1): set heading(outlined: true)
+
+  counter(heading).update(0)
+
+
+  if appendixes != none { appendixes }
 
 }
