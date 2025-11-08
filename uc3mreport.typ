@@ -404,8 +404,10 @@
 
   /* OUTLINES */
 
-  outline(title: if language == "es" [Tabla de contenidos] else [Table of contents], depth: 3)
-  pagebreak()
+  if toc {
+    outline(title: if language == "es" [Tabla de contenidos] else [Table of contents], depth: 3)
+    pagebreak()
+  }
 
   // contents
   doc
