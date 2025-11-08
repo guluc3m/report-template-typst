@@ -8,6 +8,7 @@
   title: "La mejor memoria de la historia",
   group: 89,
   bibliography-content: bibliography("bib.bib"),
+  appendixes: include "apendixes.typ",
   authors: (
     (
       name: "Luis Daniel",
