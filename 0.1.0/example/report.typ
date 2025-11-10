@@ -1,4 +1,4 @@
-#import "uc3mreport.typ": conf, azuluc3m
+#import "@local/report-template-typst:0.1.0": conf, azuluc3m
 
 #show: conf.with(
   degree: "Degree in...",
@@ -75,7 +75,7 @@
 #lorem(180)
 
 #figure(
-  image("img/old_uc3m_logo.svg", width: 70%),
+  image("../img/old_uc3m_logo.svg", width: 70%),
   caption: [El mejor logo de la UC3M, con diferencia],
   placement: bottom,
 ) <logo>
