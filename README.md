@@ -50,7 +50,7 @@ Navega hasta el directorio `{data-dir}/typst/packages/` y clona el repositorio:
 > Para más información, consultar la [documentación](https://github.com/typst/packages?tab=readme-ov-file#local-packages)
 
 ```bash
-git clone git@github.com:guluc3m/report-template-typst.git
+git clone git@github.com:guluc3m/report-template-typst.git report-template-typst/0.1.0/
 ```
 
 Una vez completado esto, navega hasta el directorio donde desees guardar tu report y ejecuta:
