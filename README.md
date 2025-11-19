@@ -72,6 +72,9 @@ typst compile report.typ
 > [!TIP]
 > Para usuarios de [Neovim](https://neovim.io/), se recomienda usar el plugin [typst-preview.nvim](https://github.com/chomosuke/typst-preview.nvim).
 
+## Contribuir
+
+Para contribuir, simplemente navega hasta el directorio donde hayas clonado el repositorio (`{data-dir}/typst/packages/report-template-typst/0.1.0/`) y emplea el directorio `example/` como _sandbox_ para probar tus modificaciones sobre `lib.typst` u otros docupentos.
 
 ## Más información
 
