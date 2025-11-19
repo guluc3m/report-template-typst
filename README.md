@@ -74,7 +74,7 @@ typst compile report.typ
 
 ## Contribuir
 
-Para contribuir, simplemente navega hasta el directorio donde hayas clonado el repositorio (`{data-dir}/typst/packages/report-template-typst/0.1.0/`) y emplea el directorio `example/` como _sandbox_ para probar tus modificaciones sobre `lib.typst` u otros docupentos.
+Para contribuir, simplemente navega hasta el directorio donde hayas clonado el repositorio (`{data-dir}/typst/packages/report-template-typst/0.1.0/`) y emplea el directorio `example/` como _sandbox_ para probar tus modificaciones sobre `lib.typst` u otros documentos.
 
 ## Más información
 

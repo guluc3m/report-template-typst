@@ -4,8 +4,6 @@ version = "0.1.0"
 entrypoint = "lib.typ"
 authors = [
     "Luis Daniel Casais Mezquida <@rajayonin>",
-    "Jorge Adrián Saghin Dudulea <@z4na14>",
-    "<@ALVAROPING1>",
     "Samuel Matamoros Alonso <@SamuelMatamoros>"
 ]
 license = "MIT"
