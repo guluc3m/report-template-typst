@@ -6,7 +6,7 @@ Para contribuir, simplemente navega hasta el directorio donde hayas clonado el r
 El repositorio cuenta con la siguente estructura:
 
 ```bash
-└── 0.1.0
+└── report-template-typst/
     ├── doc
     │   ├── documentation.pdf
     │   ├── documentation.typ
