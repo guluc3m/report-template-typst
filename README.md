@@ -1,45 +1,8 @@
 # Plantilla de Typst para memorias de la UC3M
 
-## Estructura
-El repositorio cuenta con la siguente estructura:
-
-```bash
-└── 0.1.0
-    ├── doc
-    │   ├── documentation.pdf
-    │   ├── documentation.typ
-    │   └── img
-    │       ├── cover_few_authors.png
-    │       └── cover_many_authors.png
-    ├── example
-    │   ├── apendixes.typ
-    │   ├── bib.bib
-    │   ├── img
-    │   ├── report.pdf
-    │   └── report.typ
-    ├── img
-    │   ├── new_uc3m_logo.svg
-    │   └── old_uc3m_logo.svg
-    ├── lib.typ
-    ├── README.md
-    ├── template
-    │   ├── apendixes.typ
-    │   ├── bib.bib
-    │   ├── img
-    │   ├── report.pdf
-    │   └── report.typ
-    └── typst.toml
-```
-
-El archivo de configuración, [`lib.typ`](/lib.typ), contiene la configuración de la plantilla y el archivo [`template/report.typ`](/template/report.typ) es la plantilla editable por el usuario.
-
-Cuando se ejecuta `typst init @local/report-template-typst` se crea un directorio con el nombre `report-template-typst` que contiene solo el contenido de `template/` (como se especifica en [`typst.toml`](/typst.toml)).
-
-Para más información, consulta la [documentación](/doc/documentation.pdf) de la plantilla.
-
 ## Uso
 
-Navega hasta el directorio `{data-dir}/typst/packages/` y clona el repositorio:
+Navega hasta el directorio `{data-dir}/typst/packages/local/` y clona el repositorio:
 
 > [!NOTE]
 > El directorio `{data-dir}` es diferente en cada sistema operativo:
@@ -50,7 +13,7 @@ Navega hasta el directorio `{data-dir}/typst/packages/` y clona el repositorio:
 > Para más información, consultar la [documentación](https://github.com/typst/packages?tab=readme-ov-file#local-packages)
 
 ```bash
-git clone git@github.com:guluc3m/report-template-typst.git report-template-typst/0.1.0/
+git clone https:/github.com/guluc3m/report-template-typst.git report-template-typst/0.1.0/
 ```
 
 Una vez completado esto, navega hasta el directorio donde desees guardar tu report y ejecuta:
@@ -71,10 +34,6 @@ typst compile report.typ
 
 > [!TIP]
 > Para usuarios de [Neovim](https://neovim.io/), se recomienda usar el plugin [typst-preview.nvim](https://github.com/chomosuke/typst-preview.nvim).
-
-## Contribuir
-
-Para contribuir, simplemente navega hasta el directorio donde hayas clonado el repositorio (`{data-dir}/typst/packages/report-template-typst/0.1.0/`) y emplea el directorio `example/` como _sandbox_ para probar tus modificaciones sobre `lib.typst` u otros documentos.
 
 ## Más información
 
