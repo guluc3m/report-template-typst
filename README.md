@@ -1,18 +1,28 @@
 # Plantilla de Typst para memorias de la UC3M
 
-## Estructura
-La memoria consiste de un archivo principal [`report.typ`](report.typ), y un archivo de plantilla [`uc3mreport.typ`](uc3mreport.typ), el cual contiene toda la configuración.
-
-Para más información, consulta la [documentación](/doc/documentation.pdf) de la plantilla.
-
 ## Uso
 
-Navega hasta el directorio en el que deseas guardar tu report y clona el repositorio:
+Navega hasta el directorio `{data-dir}/typst/packages/local/` y clona el repositorio:
+
+> [!NOTE]
+> El directorio `{data-dir}` es diferente en cada sistema operativo:
+> - `~/.local/share/` en linux
+> - `~/Library/Application Support/` en MacOS
+> - `%APPDATA%` (`C:\Users\UsuarioEjemplo\AppData\Roaming`) en Windows
+> 
+> Para más información, consultar la [documentación](https://github.com/typst/packages?tab=readme-ov-file#local-packages)
 
 ```bash
-git clone git@github.com:guluc3m/report-template-typst.git ./Project_name
-cd ./Project_name
+git clone https:/github.com/guluc3m/report-template-typst.git report-template-typst/0.1.0/
 ```
+
+Una vez completado esto, navega hasta el directorio donde desees guardar tu report y ejecuta:
+
+```bash
+typst init @local/report-template-typst.git
+cd report-template-typst
+```
+
 Para compilar, instala [Typst](https://github.com/typst/typst?tab=readme-ov-file#installation) y corre:
 
 ```bash
@@ -24,7 +34,6 @@ typst compile report.typ
 
 > [!TIP]
 > Para usuarios de [Neovim](https://neovim.io/), se recomienda usar el plugin [typst-preview.nvim](https://github.com/chomosuke/typst-preview.nvim).
-
 
 ## Más información
 

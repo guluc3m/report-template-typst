@@ -3,12 +3,7 @@
 #set document(author: "Samuel Matamoros Alonso", title: "UC3M Typst Report Template Documentation")
 
 #let config = tidy.parse-module(
-  read("/uc3mreport.typ"),
-  old-syntax: true,
-)
-
-#let template = tidy.parse-module(
-  read("/report.typ"),
+  read("/lib.typ"),
   old-syntax: true,
 )
 

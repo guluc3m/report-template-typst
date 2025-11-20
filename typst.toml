@@ -1,0 +1,19 @@
+[package]
+name = "report-template-typst"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = [
+    "Luis Daniel Casais Mezquida <@rajayonin>",
+    "Samuel Matamoros Alonso <@SamuelMatamoros>"
+]
+license = "MIT"
+description = "Typst report template of the Universidad Carlos III de Madrid"
+repository = "https://github.com/guluc3m/report-template-typst"
+keywords = ["uc3m", "report"]
+categories = ["paper", "report"]
+exclude = [".github", "docs", "examples", ".vscode", "template/report.pdf"]
+
+[template]
+path = "template"
+entrypoint = "report.typ"
+thumbnail = "doc/img/cover_many_authors.png"

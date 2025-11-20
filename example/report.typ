@@ -1,4 +1,4 @@
-#import "uc3mreport.typ": conf, azuluc3m
+#import "@local/report-template-typst:0.1.0": conf, azuluc3m
 
 #show: conf.with(
   degree: "Degree in...",
