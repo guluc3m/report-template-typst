@@ -295,7 +295,7 @@
       #set text(azuluc3m)
       #project
       #h(1fr)
-      #subject #if group != none [, grp. #group]
+      #subject#if group != none [, grp. #group]
 
       #v(-0.7em)
       #line(length: 100%, stroke: 0.4pt + azuluc3m)
