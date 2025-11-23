@@ -20,7 +20,7 @@ git clone https://github.com/guluc3m/report-template-typst.git report-template-t
 Una vez completado esto, navega hasta el directorio donde desees guardar tu report y ejecuta:
 
 ```bash
-typst init @local/report-template-typst.git
+typst init @local/report-template-typst
 cd report-template-typst
 ```
 
