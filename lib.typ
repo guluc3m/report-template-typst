@@ -165,8 +165,8 @@
 /// - bibliography-content (content, none): Bibliography contents, usually calling `bibliography`.
 /// - appendixes (content, none): Set of appendixes.
 /// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
-/// - date (content): You can put `#datetime.today().display()` or manually enter the date you wish. By default it is set to none
-/// - date-align (alignment): Alignment of the date inside the header. `right` by default
+/// - date (content, none): Shows the date in the cover. You can put `#datetime.today().display()` or manually enter the date you wish. If `none` (default), it's not shown.
+/// - date-align (alignment): Alignment of the date inside the header. By default, `right`.
 /// - doc (content): Document contents
 /// -> content
 #let conf(
