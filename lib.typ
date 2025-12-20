@@ -66,7 +66,7 @@
   set par(justify: false)
   set text(azuluc3m)
   set text(size: 17pt)
-  set page(header: if date != none { align(date-align, [#date])}, footer: [])
+  set page(header: if date != none { align(date-align, date)}, footer: [])
 
   // logo
   if logo == "new" {
