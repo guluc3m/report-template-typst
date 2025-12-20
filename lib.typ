@@ -59,12 +59,14 @@
   professor: none,
   team: none,
   language: "en",
+  date: none,
+  date-align: right
 ) = {
   set align(center)
   set par(justify: false)
   set text(azuluc3m)
   set text(size: 17pt)
-  set page(header: [], footer: [])
+  set page(header: if date != none { align(date-align, [#date])}, footer: [])
 
   // logo
   if logo == "new" {
@@ -163,6 +165,8 @@
 /// - bibliography-content (content, none): Bibliography contents, usually calling `bibliography`.
 /// - appendixes (content, none): Set of appendixes.
 /// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
+/// - date (content): You can put `#datetime.today().display()` or manually enter the date you wish. By default it is set to none
+/// - date-align (alignment): Alignment of the date inside the header. `right` by default
 /// - doc (content): Document contents
 /// -> content
 #let conf(
@@ -182,6 +186,8 @@
   bibliography-content: none,
   appendixes: none,
   chapter_on_new_page: true,
+  date: none,
+  date-align: right,
   doc,
 ) = {
   /* CONFIG */
@@ -354,6 +360,8 @@
     group: group,
     team: team,
     language: language,
+    date: date,
+    date-align: date-align
   )
 
 

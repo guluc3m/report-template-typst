@@ -50,7 +50,9 @@
   professor: "Perico de los Palotes",
   toc: true,
   logo: "old",
-  language: "en"
+  language: "en",
+  date: datetime.today().display(),
+  date-align: right
 )
 
 #set table(
