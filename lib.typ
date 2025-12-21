@@ -79,10 +79,14 @@
     v(1em)
   }
 
+  // degree
   emph(degree)
   parbreak()
 
+  // subject
   [#subject #year.at(0)/#year.at(1)]
+
+  // group
   linebreak()
   if group != none {
     [#if language == "en" [Group] else [Grupo] #group]
@@ -90,6 +94,7 @@
 
   v(2em)
 
+  // project
   emph(project)
   linebreak()
   text(25pt, ["#title"])
@@ -135,6 +140,7 @@
     }
   }
 
+  // date
   if date != none {
 
     if date-format == auto {
@@ -151,6 +157,7 @@
 
   v(1fr)
 
+  // professor
   if professor != none [
     #if language == "es" [
       _Profesor_\
