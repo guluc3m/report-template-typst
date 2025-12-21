@@ -46,6 +46,8 @@
 /// - professor (str, none): Professor's name
 /// - team (str): Team name (optional)
 /// - language (str): Report language, either `"es"` or `"en"`
+/// - date (datetime): Presentation date.
+/// - date-format (str): Format syntax (see https://typst.app/docs/reference/foundations/datetime/#format)
 /// -> content
 #let _cover(
   degree,
@@ -60,13 +62,13 @@
   team: none,
   language: "en",
   date: none,
-  date-align: right
+  date-format: auto,
 ) = {
   set align(center)
   set par(justify: false)
   set text(azuluc3m)
   set text(size: 17pt)
-  set page(header: if date != none { align(date-align, date)}, footer: [])
+  set page(header: [], footer: [])
 
   // logo
   if logo == "new" {
@@ -133,6 +135,20 @@
     }
   }
 
+  if date != none {
+
+    if date-format == auto {
+      date-format = "[Day] [month repr:long] [year]"
+    }
+
+    v(1fr)
+
+    text(
+      size: 1em,
+      date.display(date-format)
+    )
+  }
+
   v(1fr)
 
   if professor != none [
@@ -165,8 +181,8 @@
 /// - bibliography-content (content, none): Bibliography contents, usually calling `bibliography`.
 /// - appendixes (content, none): Set of appendixes.
 /// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
-/// - date (content, none): Shows the date in the cover. You can put `#datetime.today().display()` or manually enter the date you wish. If `none` (default), it's not shown.
-/// - date-align (alignment): Alignment of the date inside the header. By default, `right`.
+/// - date (datetime): Presentation date.
+/// - date-format (str): Format syntax (see https://typst.app/docs/reference/foundations/datetime/#format)
 /// - doc (content): Document contents
 /// -> content
 #let conf(
@@ -187,7 +203,7 @@
   appendixes: none,
   chapter_on_new_page: true,
   date: none,
-  date-align: right,
+  date-format: auto,
   doc,
 ) = {
   /* CONFIG */
@@ -196,6 +212,7 @@
     author: authors.map(x => x.name + " " + x.surname),
     description: [#project, #subject #year.at(0)/#year.at(1). Universidad Carlos
       III de Madrid],
+    date: if date != none { date },
   )
 
   /* TEXT */
@@ -361,7 +378,7 @@
     team: team,
     language: language,
     date: date,
-    date-align: date-align
+    date-format: date-format
   )
 
 

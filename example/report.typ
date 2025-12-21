@@ -51,8 +51,8 @@
   toc: true,
   logo: "old",
   language: "en",
-  date: datetime.today().display(),
-  date-align: right
+  date: datetime.today(),
+  // date-format: "[day] [month repr:long] [year]"
 )
 
 #set table(
