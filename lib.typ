@@ -46,8 +46,8 @@
 /// - professor (str, none): Professor's name
 /// - team (str): Team name (optional)
 /// - language (str): Report language, either `"es"` or `"en"`
-/// - date (datetime): Presentation date.
-/// - date-format (str): Format syntax (see https://typst.app/docs/reference/foundations/datetime/#format)
+/// - date (datetime | content): Presentation date. Either a `datetime` object or `content`
+/// - date-format (str): (Only if the type of `date` is datetime)Format syntax (see https://typst.app/docs/reference/foundations/datetime/#format)
 /// -> content
 #let _cover(
   degree,
@@ -143,16 +143,17 @@
   // date
   if date != none {
 
-    if date-format == auto {
-      date-format = "[Day] [month repr:long] [year]"
-    }
-
+    set text(size: 1em)
     v(1fr)
 
-    text(
-      size: 1em,
+    if type(date) == content {
+      date
+    } else {
+      if date-format == auto {
+        date-format = "[Day] [month repr:long] [year]"
+      }
       date.display(date-format)
-    )
+    }
   }
 
   v(1fr)
@@ -219,7 +220,7 @@
     author: authors.map(x => x.name + " " + x.surname),
     description: [#project, #subject #year.at(0)/#year.at(1). Universidad Carlos
       III de Madrid],
-    date: if date != none { date },
+    date: if date != none and type(date) == datetime { date },
   )
 
   /* TEXT */

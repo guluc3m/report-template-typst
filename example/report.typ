@@ -51,7 +51,7 @@
   toc: true,
   logo: "old",
   language: "en",
-  date: datetime.today(),
+  date: [12 diciembre 25],
   // date-format: "[day] [month repr:long] [year]"
 )
 
