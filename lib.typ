@@ -6,6 +6,24 @@
 
 #let azuluc3m = rgb("#000e78")
 
+// Fix in order to display the month in spanish
+#let MONTHS = (
+  es: (
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ),
+)
+
 /// Writes the authors name in short format
 ///
 /// - authors (array): An array containing the authors information to iterate through
@@ -46,6 +64,8 @@
 /// - professor (str, none): Professor's name
 /// - team (str): Team name (optional)
 /// - language (str): Report language, either `"es"` or `"en"`
+/// - date (datetime, content): Presentation date. Either a `datetime` object or `content`
+/// - date-format (str, auto): (Only if the type of `date` is datetime) Format syntax (see https://typst.app/docs/reference/foundations/datetime/#format)
 /// -> content
 #let _cover(
   degree,
@@ -59,7 +79,10 @@
   professor: none,
   team: none,
   language: "en",
+  date: none,
+  date-format: auto,
 ) = {
+
   set align(center)
   set par(justify: false)
   set text(azuluc3m)
@@ -75,10 +98,14 @@
     v(1em)
   }
 
+  // degree
   emph(degree)
   parbreak()
 
+  // subject
   [#subject #year.at(0)/#year.at(1)]
+
+  // group
   linebreak()
   if group != none {
     [#if language == "en" [Group] else [Grupo] #group]
@@ -86,6 +113,7 @@
 
   v(2em)
 
+  // project
   emph(project)
   linebreak()
   text(25pt, ["#title"])
@@ -131,8 +159,29 @@
     }
   }
 
+  // date
+  if date != none {
+
+    set text(size: 1em)
+    v(1fr)
+
+    if type(date) == content {
+      date
+    } else {
+      if date-format == auto { date-format = "[Day] [month repr:long] [year]" }
+      if (language != "en" and date-format.contains("[month repr:long]")) {
+        date-format = date-format.replace(
+          "[month repr:long]",
+          MONTHS.at(language).at(date.month() - 1)
+        )
+      }
+      date.display(date-format)
+    }
+  }
+
   v(1fr)
 
+  // professor
   if professor != none [
     #if language == "es" [
       _Profesor_\
@@ -163,6 +212,8 @@
 /// - bibliography-content (content, none): Bibliography contents, usually calling `bibliography`.
 /// - appendixes (content, none): Set of appendixes.
 /// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
+/// - date (datetime, none): Report date to put in the cover page, e.g. `datetime.today()`. If `none`, no date will be displayed.
+///// - date-format (str, auto): Date format syntax (see https://typst.app/docs/reference/foundations/datetime/#format). If `auto`, it will be set according to `language`. Only applies if `date` is not `none`.
 /// - doc (content): Document contents
 /// -> content
 #let conf(
@@ -182,6 +233,8 @@
   bibliography-content: none,
   appendixes: none,
   chapter_on_new_page: true,
+  date: none,
+  date-format: auto,
   doc,
 ) = {
   /* CONFIG */
@@ -190,6 +243,7 @@
     author: authors.map(x => x.name + " " + x.surname),
     description: [#project, #subject #year.at(0)/#year.at(1). Universidad Carlos
       III de Madrid],
+    date: if date != none and type(date) == datetime { date },
   )
 
   /* TEXT */
@@ -354,6 +408,8 @@
     group: group,
     team: team,
     language: language,
+    date: date,
+    date-format: date-format
   )
 
 
