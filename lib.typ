@@ -6,6 +6,24 @@
 
 #let azuluc3m = rgb("#000e78")
 
+// Fix in order to display the month in spanish
+#let MONTHS = (
+  es: (
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ),
+)
+
 /// Writes the authors name in short format
 ///
 /// - authors (array): An array containing the authors information to iterate through
@@ -46,8 +64,8 @@
 /// - professor (str, none): Professor's name
 /// - team (str): Team name (optional)
 /// - language (str): Report language, either `"es"` or `"en"`
-/// - date (datetime | content): Presentation date. Either a `datetime` object or `content`
-/// - date-format (str): (Only if the type of `date` is datetime)Format syntax (see https://typst.app/docs/reference/foundations/datetime/#format)
+/// - date (datetime, content): Presentation date. Either a `datetime` object or `content`
+/// - date-format (str, auto): (Only if the type of `date` is datetime) Format syntax (see https://typst.app/docs/reference/foundations/datetime/#format)
 /// -> content
 #let _cover(
   degree,
@@ -64,6 +82,7 @@
   date: none,
   date-format: auto,
 ) = {
+
   set align(center)
   set par(justify: false)
   set text(azuluc3m)
@@ -149,8 +168,12 @@
     if type(date) == content {
       date
     } else {
-      if date-format == auto {
-        date-format = "[Day] [month repr:long] [year]"
+      if date-format == auto { date-format = "[Day] [month repr:long] [year]" }
+      if (language != "en" and date-format.contains("[month repr:long]")) {
+        date-format = date-format.replace(
+          "[month repr:long]",
+          MONTHS.at(language).at(date.month() - 1)
+        )
       }
       date.display(date-format)
     }
@@ -189,8 +212,8 @@
 /// - bibliography-content (content, none): Bibliography contents, usually calling `bibliography`.
 /// - appendixes (content, none): Set of appendixes.
 /// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
-/// - date (datetime): Presentation date.
-/// - date-format (str): Format syntax (see https://typst.app/docs/reference/foundations/datetime/#format)
+/// - date (datetime, none): Report date to put in the cover page, e.g. `datetime.today()`. If `none`, no date will be displayed.
+/// - date-format (str, auto): (Only applies if `date` attribute is a datetime object) Format syntax (see https://typst.app/docs/reference/foundations/datetime/#format). It will change with the language (for supported languages).
 /// - doc (content): Document contents
 /// -> content
 #let conf(

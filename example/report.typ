@@ -50,9 +50,9 @@
   professor: "Perico de los Palotes",
   toc: true,
   logo: "old",
-  language: "en",
-  date: [12 diciembre 25],
-  // date-format: "[day] [month repr:long] [year]"
+  language: "es",
+  date: datetime.today(),
+  date-format: "[month repr:long] [year]"
 )
 
 #set table(
