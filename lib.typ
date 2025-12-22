@@ -213,7 +213,7 @@
 /// - appendixes (content, none): Set of appendixes.
 /// - chapter_on_new_page (bool):  Whether to start each chapter on a new page (`true`) or not (`false`)
 /// - date (datetime, none): Report date to put in the cover page, e.g. `datetime.today()`. If `none`, no date will be displayed.
-/// - date-format (str, auto): (Only applies if `date` attribute is a datetime object) Format syntax (see https://typst.app/docs/reference/foundations/datetime/#format). It will change with the language (for supported languages).
+///// - date-format (str, auto): Date format syntax (see https://typst.app/docs/reference/foundations/datetime/#format). If `auto`, it will be set according to `language`. Only applies if `date` is not `none`.
 /// - doc (content): Document contents
 /// -> content
 #let conf(
