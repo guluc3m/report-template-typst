@@ -1,7 +1,8 @@
 // "THE BEER-WARE LICENSE" (Revision 42):
-// L. Daniel Casais <@rajayonin> wrote this file. As long as you retain this
-// notice you can do whatever you want with this stuff. If we meet some day, and
-// you think this stuff is worth it, you can buy me a beer in return.
+// The nerds from GUL-UC3M <info@gul.uc3m.es> wrote this file. As long as you
+// retain this notice you can do whatever you want with this stuff. If you meet
+// any of us some day, and you think this stuff is worth it, you can buy us a
+// beer in return.
 
 
 #let azuluc3m = rgb("#000e78")
